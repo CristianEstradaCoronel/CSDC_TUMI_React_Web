@@ -14,12 +14,14 @@ export default function Csdctumi() {
     switch (section) {
       case 'inicio':
         return (
-          <section 
-            className="h-[80vh] bg-cover bg-center flex items-center justify-center rounded-xl shadow-lg"
-            style={{ backgroundImage: "url('/img/estadio.jpg')" }}
+          <section
+            className="h-[80vh] bg-cover bg-center flex items-end justify-center rounded-xl shadow-lg"
+            style={{ backgroundImage: "url('/img/estadiotumi.png')" }}
           >
-            <div className="bg-black bg-opacity-60 p-8 rounded text-center">
-              <h1 className="text-5xl font-extrabold text-yellow-400 drop-shadow-lg">¡Bienvenidos a CSDC TUMI!</h1>
+            <div className="bg-black bg-opacity-60 p-8 mb-16 rounded text-center">
+              <h1 className="text-5xl font-extrabold text-yellow-400 drop-shadow-lg">
+                ¡Bienvenidos a CSDC TUMI!
+              </h1>
               <p className="text-white mt-4 text-lg">
                 Pasión, garra y orgullo dorado y negro ⚽
               </p>
