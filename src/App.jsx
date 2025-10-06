@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import Jugadores from "./pages/jugadores.jsx";
 
 export default function Csdctumi() {
   const [section, setSection] = useState('inicio');
@@ -35,21 +36,22 @@ export default function Csdctumi() {
           </div>
         );
       case 'jugadores':
-        return (
-          <div className="space-y-4">
-            <h2 className="text-3xl font-bold text-yellow-500">Plantel Oficial</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {["Carlos Ramírez", "Luis Paredes", "Miguel Torres", "Andrés Gómez", "Rafael León", "Víctor Salas"].map((jugador) => (
-                <Card key={jugador} className="bg-black/40 border-yellow-500 text-center">
-                  <CardContent className="p-4">
-                    <p className="font-semibold">{jugador}</p>
-                    <p className="text-sm text-gray-400">Delantero</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        );
+        return <Jugadores />;
+        // return (
+        //   <div className="space-y-4">
+        //     <h2 className="text-3xl font-bold text-yellow-500">Plantel Oficial</h2>
+        //     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        //       {["Carlos Ramírez", "Luis Paredes", "Miguel Torres", "Andrés Gómez", "Rafael León", "Víctor Salas"].map((jugador) => (
+        //         <Card key={jugador} className="bg-black/40 border-yellow-500 text-center">
+        //           <CardContent className="p-4">
+        //             <p className="font-semibold">{jugador}</p>
+        //             <p className="text-sm text-gray-400">Delantero</p>
+        //           </CardContent>
+        //         </Card>
+        //       ))}
+        //     </div>
+        //   </div>
+        // );
       case 'galeria':
         return (
           <div className="space-y-4">

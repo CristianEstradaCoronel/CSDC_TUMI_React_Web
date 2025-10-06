@@ -1,0 +1,43 @@
+.card-fifa {
+  position: relative;
+  background: linear-gradient(145deg, #b8860b, #ffcc00, #b8860b);
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  overflow: hidden;
+  transform: scale(1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-fifa:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 30px rgba(255, 255, 0, 0.6);
+}
+
+/* Brillo dorado animado tipo carta FIFA */
+.card-fifa .shine {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shineMove 3s infinite;
+}
+
+@keyframes shineMove {
+  0% {
+    left: -75%;
+  }
+  50% {
+    left: 125%;
+  }
+  100% {
+    left: 125%;
+  }
+}
