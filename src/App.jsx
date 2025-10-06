@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Jugadores from "./pages/jugadores.jsx";
+import Historia from "./pages/historia.jsx";
+import Tienda from "./pages/tienda.jsx";
+import Contacto from "./pages/contacto.jsx";
 
 export default function Csdctumi() {
   const [section, setSection] = useState('inicio');
@@ -24,34 +27,11 @@ export default function Csdctumi() {
           </section>
         );
       case 'historia':
-        return (
-          <div className="space-y-4">
-            <h2 className="text-3xl font-bold text-yellow-500">Nuestra Historia</h2>
-            <p>
-              Fundado en el año 1985, el CSDC TUMI nació con el propósito de fomentar el deporte y la unión entre amigos. Desde sus inicios, el club ha sido símbolo de garra, respeto y pasión por el fútbol.
-            </p>
-            <p>
-              Los colores dorado y negro representan la fuerza, la elegancia y el espíritu combativo de nuestro equipo.
-            </p>
-          </div>
-        );
+        return <Historia />;
+        
       case 'jugadores':
         return <Jugadores />;
-        // return (
-        //   <div className="space-y-4">
-        //     <h2 className="text-3xl font-bold text-yellow-500">Plantel Oficial</h2>
-        //     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        //       {["Carlos Ramírez", "Luis Paredes", "Miguel Torres", "Andrés Gómez", "Rafael León", "Víctor Salas"].map((jugador) => (
-        //         <Card key={jugador} className="bg-black/40 border-yellow-500 text-center">
-        //           <CardContent className="p-4">
-        //             <p className="font-semibold">{jugador}</p>
-        //             <p className="text-sm text-gray-400">Delantero</p>
-        //           </CardContent>
-        //         </Card>
-        //       ))}
-        //     </div>
-        //   </div>
-        // );
+  
       case 'galeria':
         return (
           <div className="space-y-4">
@@ -64,21 +44,11 @@ export default function Csdctumi() {
           </div>
         );
       case 'tienda':
-        return (
-          <div className="space-y-4 text-center">
-            <h2 className="text-3xl font-bold text-yellow-500">Tienda Oficial</h2>
-            <p>Muy pronto podrás adquirir camisetas, gorras y artículos oficiales del club.</p>
-            <Button className="bg-yellow-500 text-black font-bold hover:bg-yellow-400">Próximamente</Button>
-          </div>
-        );
+        return <Tienda />;
+
       case 'contacto':
-        return (
-          <div className="space-y-4 text-center">
-            <h2 className="text-3xl font-bold text-yellow-500">Contacto</h2>
-            <p>¿Quieres unirte al club o colaborar con nosotros?</p>
-            <p className="text-gray-400">Escríbenos a <strong>contacto@csdctumi.com</strong></p>
-          </div>
-        );
+        return <Contacto />;
+
       case 'intranet':
         return (
           <div className="space-y-4 text-center">
@@ -96,26 +66,44 @@ export default function Csdctumi() {
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white p-4">
       <nav className="flex flex-wrap justify-center gap-3 mb-8">
         {['inicio', 'historia', 'jugadores', 'galeria', 'tienda', 'contacto', 'intranet'].map((s) => (
-          <Button
+          <motion.div
             key={s}
-            onClick={() => setSection(s)}
-            variant={section === s ? 'default' : 'outline'}
-            className={`capitalize ${section === s ? 'bg-yellow-500 text-black' : 'border-yellow-500 text-yellow-500 hover:bg-yellow-500/20'}`}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            {s}
-          </Button>
+            <Button
+              onClick={() => setSection(s)}
+              variant={section === s ? 'default' : 'outline'}
+              className={`capitalize relative overflow-hidden transition-all duration-300 
+                ${section === s 
+                  ? 'bg-yellow-500 text-black shadow-lg shadow-yellow-500/30' 
+                  : 'border-yellow-500 text-yellow-500 hover:bg-yellow-500/20'
+                }`}
+            >
+              {s}
+              {section === s && (
+                <motion.div
+                  layoutId="activeIndicator"
+                  className="absolute inset-0 border-2 border-yellow-400 rounded-lg pointer-events-none"
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                />
+              )}
+            </Button>
+          </motion.div>
         ))}
       </nav>
 
       <motion.div
-        key={section}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-5xl mx-auto"
-      >
-        {renderSection()}
-      </motion.div>
+      key={section}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className="max-w-5xl mx-auto"
+    >
+      {renderSection()}
+    </motion.div>
 
       <footer className="mt-16 text-center text-gray-500 text-sm border-t border-yellow-500/20 pt-4">
         © {new Date().getFullYear()} CSDC TUMI — Dorado y Negro. Todos los derechos reservados.
