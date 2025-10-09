@@ -45,23 +45,30 @@ const Historia = () => {
         </p>
       </motion.div>
 
-      {/* Espacio para las 3 fotos */}
+      {/* 📸 Galería de fotos del equipo */}
       <motion.div
         className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl w-full"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 1.2 }}
       >
-        <div className="h-64 bg-gray-300 rounded-2xl shadow-md flex items-center justify-center text-gray-500 text-sm italic">
-          Foto 1 - (Agregar luego)
-        </div>
-        <div className="h-64 bg-gray-300 rounded-2xl shadow-md flex items-center justify-center text-gray-500 text-sm italic">
-          Foto 2 - (Agregar luego)
-        </div>
-        <div className="h-64 bg-gray-300 rounded-2xl shadow-md flex items-center justify-center text-gray-500 text-sm italic">
-          Foto 3 - (Agregar luego)
-        </div>
+        <img
+          src="/img/historia/1.jpg"
+          alt="Historia 1"
+          className="h-64 w-full object-cover rounded-2xl shadow-md"
+        />
+        <img
+          src="/img/historia/2.jpg"
+          alt="Historia 2"
+          className="h-64 w-full object-cover rounded-2xl shadow-md"
+        />
+        <img
+          src="/img/historia/3.jpg"
+          alt="Historia 3"
+          className="h-64 w-full object-cover rounded-2xl shadow-md"
+        />
       </motion.div>
+
     </div>
   );
 };
